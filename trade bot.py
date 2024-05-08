@@ -11,11 +11,15 @@ resourse_value = {}
 #reunojen piirto
 def piirto(img_rgb, loc, w, h, img_type):
     for pt in zip(*loc[::-1]):
-        cv2.rectangle(img_rgb, pt, (pt[0] + w, pt[1] + h), (0,255,0), 2)
+        if img_type == 'gem':
+            color = (0, 255, 0)  # Vihreä gemille
+        elif img_type == 'cheese':
+            color = (0, 0, 255)  # Punainen juustolle
+        cv2.rectangle(img_rgb, pt, (pt[0] + w, pt[1] + h), color, 2)
         sensitivity = 100
         resourse_value.setdefault(img_type, set()).add((round(pt[0]/sensitivity), round(pt[1]/sensitivity)))
 
-#gemi tunnistus
+#kuvan tunnistus
 img_rgb = cv2.imread('screenshot.png')
 img_gray = cv2.cvtColor(img_rgb, cv2.COLOR_BGR2GRAY)
 
