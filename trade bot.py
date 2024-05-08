@@ -10,6 +10,16 @@ kalja_count = 0
 cancel_count = 0
 resourse_value = {}
 
+def reset_trade():
+    pyautogui.moveTo(470, 830)
+    pyautogui.mouseDown()
+    pyautogui.mouseUp()
+
+def claim_trade():
+    pyautogui.moveTo(1500, 830)
+    pyautogui.mouseDown()
+    pyautogui.mouseUp()    
+
 #reunojen piirto
 def piirto(img_rgb, loc, w, h, img_type):
     for pt in zip(*loc[::-1]):
@@ -70,4 +80,3 @@ print('tradeja: ', cancel_count)
 while True:
     if keyboard.is_pressed('f4'):
         print("trade bot käynnistetty.")
-        pyautogui.moveTo(400, 870)
